@@ -16,7 +16,7 @@ The objective of this robot is to explore indoor areas to find your cat. This is
     - Three wheels?
         - Two driven, one passive
     - Four Wheels?
-        - Two driven, two passive
+        - Two driven, two passive (castor)
         - Four driven
 
 ## Design Procedure
@@ -56,9 +56,18 @@ The objective of this robot is to explore indoor areas to find your cat. This is
 
 ## Bill of Materials
 - The Robot
+    - Motors: [Geared DC Motor, Adafruit #4416](https://www.adafruit.com/product/4416)
+        - M3 Bolts?
 - The Docking Station
 - The Kiosk
 - Controller
+
+### Motor Notes
+- 2 M3 bolt holes on the front surface. 17mm apart
+- 3mm diameter shaft, 11mm long, keyed .45mm deep
+- For the wheel... maybe we can laser cut an acrylic wheel, when attach our own rubber to it... That way its a perfect fit! Or maybe 3D print the wheel! :D
+- Swivel wheel option: [Adafruit #2942](https://www.adafruit.com/product/2942)
+
 
 ## Notes
 - Create other Repos for tutorials like using the PI PICO, or for building individual components?
@@ -144,5 +153,7 @@ Automated Control with Nav2
 - Neural Network Control
 
 ## TODO
-- Clean up this document
-- Start a BOM
+- Gather up the components we have (document them in a BOM)
+- Start to make 3D models (onshape)
+    - All on one level? Sensors and motors. This helps with consistensy. Multiple levels may have some rotation due to inaccuracies of the standoffs.
+- Convert the 3D model into a URDF to use in Gazebo
