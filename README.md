@@ -152,8 +152,34 @@ Automated Control with Nav2
 - Fuzzy Logic Control
 - Neural Network Control
 
+## Test Setup
+### PICO Wiring
+```
+              |01|-----|40| VBUS
+              |02|-----|39|
+  Bread (GND) |03|-----|38| IMU(GND)
+   Motor2 (A) |04|-----|37|
+   Motor2 (B) |05|-----|36| IMU(3.3)
+   Motor1 (A) |06|-----|35|
+   Motor1 (B) |07|-----|34|
+              |08|-----|33|
+Motor1 (PWMA) |09|-----|32|
+Motor1 (AIN2) |10|-----|31|
+Motor1 (AIN1) |11|-----|30|
+Motor2 (BIN1) |12|-----|29|
+ Bridge (GND) |13|-----|28|
+Motor2 (BIN2) |14|-----|27| IMU(X)
+Motor2 (PWMB) |15|-----|26| IMU(Y)
+              |16|-----|25| IMU(Z)
+              |17|-----|24| IMU(ST)
+              |18|-----|23|
+              |19|-----|22|
+              |20|-----|21|
+```
+
 ## TODO
-- Gather up the components we have (document them in a BOM)
+- Gather and design the electrical components
+- Gather and design the physical components
 - Start to make 3D models (onshape)
     - All on one level? Sensors and motors. This helps with consistensy. Multiple levels may have some rotation due to inaccuracies of the standoffs.
 - Convert the 3D model into a URDF to use in Gazebo
