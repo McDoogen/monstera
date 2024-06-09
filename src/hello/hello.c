@@ -1,17 +1,94 @@
 #include "pico/stdlib.h"
+#include "hardware/pwm.h"
+
+void stall_motor(uint pin1, uint pin2) {
+    gpio_put(pin1, 0);
+    gpio_put(pin2, 0);
+}
+
+void spin_motor(uint pin1, uint pin2, bool direction) {
+    if(direction) {
+        gpio_put(pin1, 0);
+        gpio_put(pin2, 1);
+    } else {
+        gpio_put(pin1, 1);
+        gpio_put(pin2, 0);
+    }
+
+}
+
+void brake_motor(uint pin1, uint pin2) {
+    gpio_put(pin1, 1);
+    gpio_put(pin2, 1);
+}
 
 int main() {
-#ifndef PICO_DEFAULT_LED_PIN
-#warning blink example requires a board with a regular LED
-#else
+
+    // LED Status Pin Setup
     const uint LED_PIN = PICO_DEFAULT_LED_PIN;
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    // H-Bridge Pin Setup
+    const uint AIN1_PIN = 8;
+    gpio_init(AIN1_PIN);
+    gpio_set_dir(AIN1_PIN, GPIO_OUT);
+
+    const uint AIN2_PIN = 7;
+    gpio_init(AIN2_PIN);
+    gpio_set_dir(AIN2_PIN, GPIO_OUT);
+
+    const uint BIN1_PIN = 9;
+    gpio_init(BIN1_PIN);
+    gpio_set_dir(BIN1_PIN, GPIO_OUT);
+
+    const uint BIN2_PIN = 10;
+    gpio_init(BIN2_PIN);
+    gpio_set_dir(BIN2_PIN, GPIO_OUT);
+
+    const uint PWMA_PIN = 6;
+    gpio_set_function(PWMA_PIN, GPIO_FUNC_PWM);
+    uint sliceA = pwm_gpio_to_slice_num(PWMA_PIN);
+    uint chanA = pwm_gpio_to_channel(PWMA_PIN);
+    pwm_set_wrap(sliceA, 255);
+    pwm_set_chan_level(sliceA, chanA, 125);
+    pwm_set_enabled(sliceA, true);
+
+    const uint PWMB_PIN = 11;
+    gpio_set_function(PWMB_PIN, GPIO_FUNC_PWM);
+    uint sliceB = pwm_gpio_to_slice_num(PWMB_PIN);
+    uint chanB = pwm_gpio_to_channel(PWMB_PIN);
+    pwm_set_wrap(sliceB, 255);
+    pwm_set_chan_level(sliceB, chanB, 125);
+    pwm_set_enabled(sliceB, true);
+
     while (true) {
-        gpio_put(LED_PIN, 1);
-        sleep_ms(250);
+    /*
+        Better Motor Test:
+        - Stall 3 seconds
+        - Spin CW accelerating up to max
+        - Slow down to brake
+        - Brake 3 seconds
+        - Same but CCW
+    */
+        // Stall 3 seconds
         gpio_put(LED_PIN, 0);
-        sleep_ms(250);
+        stall_motor(AIN1_PIN, AIN2_PIN);
+        sleep_ms(3000);
+
+        // Spin 3 seconds
+        gpio_put(LED_PIN, 1);
+        spin_motor(AIN1_PIN, AIN2_PIN, 0);
+        sleep_ms(3000);
+
+        // Brake 3 seconds
+        gpio_put(LED_PIN, 0);
+        brake_motor(AIN1_PIN, AIN2_PIN);
+        sleep_ms(3000);
+
+        // Spin 3 seconds, in the opposite direction
+        gpio_put(LED_PIN, 1);
+        spin_motor(AIN1_PIN, AIN2_PIN, 1);
+        sleep_ms(3000);
     }
-#endif
 }

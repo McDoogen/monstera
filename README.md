@@ -155,26 +155,26 @@ Automated Control with Nav2
 ## Test Setup
 ### PICO Wiring
 ```
-              |01|-----|40| VBUS
-              |02|-----|39|
-  Bread (GND) |03|-----|38| IMU(GND)
-   Motor2 (A) |04|-----|37|
-   Motor2 (B) |05|-----|36| IMU(3.3)
-   Motor1 (A) |06|-----|35|
-   Motor1 (B) |07|-----|34|
-              |08|-----|33|
-Motor1 (PWMA) |09|-----|32|
-Motor1 (AIN2) |10|-----|31|
-Motor1 (AIN1) |11|-----|30|
-Motor2 (BIN1) |12|-----|29|
- Bridge (GND) |13|-----|28|
-Motor2 (BIN2) |14|-----|27| IMU(X)
-Motor2 (PWMB) |15|-----|26| IMU(Y)
-              |16|-----|25| IMU(Z)
-              |17|-----|24| IMU(ST)
-              |18|-----|23|
-              |19|-----|22|
-              |20|-----|21|
+              |GP00|-----|VBUS|
+              |GP01|-----|VSYS|
+  Bread (GND) |GND |-----|GND | IMU(GND)
+   Motor2 (A) |GP02|-----|3V3E|
+   Motor2 (B) |GP03|-----|3V3 | IMU(3.3)
+   Motor1 (A) |GP04|-----|ADCR|
+   Motor1 (B) |GP05|-----|GP28|
+              |GND |-----|ADCG|
+Motor1 (PWMA) |GP06|-----|GP27|
+Motor1 (AIN2) |GP07|-----|GP26|
+Motor1 (AIN1) |GP08|-----|RUN |
+Motor2 (BIN1) |GP09|-----|GP22|
+ Bridge (GND) |GND |-----|GND |
+Motor2 (BIN2) |GP10|-----|GP21| IMU(X)
+Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
+              |GP12|-----|GP19| IMU(Z)
+              |GP13|-----|GP18| IMU(ST)
+              |GND |-----|GND |
+              |GP14|-----|GP17|
+              |GP15|-----|GP16|
 ```
 
 ## TODO
