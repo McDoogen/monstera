@@ -58,6 +58,10 @@ The objective of this robot is to explore indoor areas to find your cat. This is
 - The Robot
     - Motors: [Geared DC Motor, Adafruit #4416](https://www.adafruit.com/product/4416)
         - M3 Bolts?
+    - Possible Sensors
+        - https://store.stereolabs.com/products/zed-mini
+        - https://shop.luxonis.com/collections/oak-cameras-1/products/oak-d-lite-1?variant=42583102456031
+        - https://store.intelrealsense.com/buy-intel-realsense-depth-camera-d415.html
 - The Docking Station
 - The Kiosk
 - Controller
