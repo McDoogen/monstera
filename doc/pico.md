@@ -94,28 +94,43 @@ rm -rf ~/picotool
 
 
 
-## Setup ROS Humble
-#TODO:DS: Change to latest for Ubuntu 24
-This project uses ROS 2 Humble. You can set that up by following the procedure documented [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html).
+## Setup ROS Jazzy
+This project uses ROS 2 Jazzy. You can set that up by following the procedure documented [here](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html).
 
 And to source your ROS2 Environment on every session, run this command
 
 ```
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 ```
 
 ## Setup micro-ros-agent
 
-1. Follow the instructions for Building the micro-ros-setup package on ROS2 [here](https://github.com/micro-ROS/micro_ros_setup?tab=readme-ov-file#building)
+From the project root directory, run the following commands
+```
+mkdir uros_ws && cd uros_ws
+git clone -b jazzy https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+rosdep update && rosdep install --from-paths src --ignore-src -y
+colcon build
+source install/local_setup.bash
+```
 
-2. Follow the instructions for Building and running the micro-ros-agent [here](https://github.com/micro-ROS/micro_ros_setup?tab=readme-ov-file#building-micro-ros-agent)
 
+### Sources
+[Source for building micro_ros](https://github.com/micro-ROS/micro_ros_setup/tree/jazzy?tab=readme-ov-file#building)
+
+[Source for building micro_ros_agent](https://github.com/micro-ROS/micro_ros_setup/tree/jazzy?tab=readme-ov-file#building-micro-ros-agent)
+
+#TODO:DS: Do I need to do this all in a ROS2 workspace? Maybe I should start there...
+#TODO:DS: Should we change the directory where this is installed? Can we automagically include this in the CMakeLists?
+#TODO:DS: clean up this section
+#TODO:DS: do we need to source the local_setup every time? Should we add this to the bashrc?
+#TODO:DS: Read again how the workspaces work
 #TODO:DS: Example
 ```
 ros2 run micro_ros_agent micro_ros_agent serial -D /dev/ttyACM0
 ```
 
-#TODO:DS: Redo this for our project. Simplify the steps from the repo and specify it for humble. Or should we just use the docker container?
+#TODO:DS: Redo this for our project. Simplify the steps from the repo and specify it for jazzy. Or should we just use the docker container?
 
 
 ## TODO: What else needs to be set up?
