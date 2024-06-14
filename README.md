@@ -188,3 +188,5 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
     - All on one level? Sensors and motors. This helps with consistensy. Multiple levels may have some rotation due to inaccuracies of the standoffs.
 - Convert the 3D model into a URDF to use in Gazebo
 - Add links to sub-documents
+- I think I need to split this project into different repos? Let's spend some time thinking of the project structure using PICO & micro-ros + ROS + design documentation.
+- One Repo, or many?
