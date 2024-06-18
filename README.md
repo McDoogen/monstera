@@ -190,3 +190,8 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Add links to sub-documents
 - I think I need to split this project into different repos? Let's spend some time thinking of the project structure using PICO & micro-ros + ROS + design documentation.
 - One Repo, or many?
+- Add steps on how packages were created?
+- Add the build steps... colcon etc
+- Add more steps for setting up workspace? Still need to think how to organize the repo....
+- Do I need individual licenses on each package too?
+- Can I combine the ROS and micro-ros into one package with ament_cmake?
