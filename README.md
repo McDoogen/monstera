@@ -11,10 +11,19 @@ TODO:DS: Using Ubuntu 24, using ROS2 Jazzy. Environment requirements?
 TODO:DS: ...
 
 ### Setting up a new package
+This project consists of ROS 2 packages that compliment the major components of the robot. To create a new package, run the following command from the workspace src directory:
+
+```
+ros2 pkg create --build-type ament_cmake --license MIT <package_name>
+```
+
+The build type can be ament_cmake, cmake, or python_cmake. You can read more about creating ROS 2 packages [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#create-a-package).
+
 
 ## Components
 TODO:DS: Treat the packages as 'Components' of the design. 1:1 Component to package
 TODO:DS: Come up with the actual major robot components.
+TODO:DS: As per the design, the robot consists of components bla, bla, and bla. The following three packages relate to them?
 
 ### Test ROS Micro Component
 TODO:DS: Introduce the package, link to external document with more specifics on building, deploying, the project. Hardware, etc
