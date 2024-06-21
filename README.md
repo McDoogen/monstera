@@ -97,3 +97,4 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Should we put documentation for the specific tools like Pi Pico in the individual packages or here? Whats the idea here? This Workspace is for building these two specific package for running on the Monstera Robot. Sure, they can split off. But for this case they are tightly coupled to the Monstera Robot
 - So should all documentation be in the workspace?
 - Make sure to include plenty of links for pi pico development and ROS2 etc
+- Should I install the pico-sdk source local to this workspace instead? Is that what the include directory is for? Maybe this will help: https://answers.ros.org/question/364293/how-to-include-library-header-files/
