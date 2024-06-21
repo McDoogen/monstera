@@ -12,8 +12,8 @@ This project provides instructions for building and installing software componen
 [Workspace Setup](doc/workspace_setup.md)
 
 ## Packages
+This project consists of ROS 2 packages that compliment the major components of the robot. 
 TODO:DS: brief detail on how to build the overall package
-TODO:DS: Information on how to build each individual package
 
 ### Monstera Main Controller
 TODO:DS: Brief detail on Package 1
@@ -22,6 +22,16 @@ TODO:DS: How to deploy Package 1
 TODO:DS: Link to Package 1, for more details and specific component documentation
 
 ### Monstera Motor Controller
+TODO:DS: ...
+
+### Creating a New Package
+To create a new package, run the following command from the workspace **src** directory:
+
+```
+ros2 pkg create --build-type ament_cmake --license MIT <package_name>
+```
+
+The build type can be ament_cmake, cmake, or python_cmake. You can read more about creating ROS 2 packages [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#create-a-package).
 
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
