@@ -2,36 +2,24 @@
 TODO:DS: What is Monstera? What is the purpose of this project?
 
 ## Robot Design
-TODO:DS: Briefly mention it here, but then link to an external document
+TODO:DS: Briefly mention it here
+
+[Link to Document](doc/robot_design.md)
 
 ## Setting up your workspace
-TODO:DS: Using Ubuntu 24, using ROS2 Jazzy. Environment requirements? 
+TODO:DS: Using Ubuntu 24, using ROS2 Jazzy. Environment requirements?  Keep it brief.
 
-### Installing Dependencies
-TODO:DS: ...
+[Link to Document](doc/workspace_setup.md)
 
-### Setting up a new package
-This project consists of ROS 2 packages that compliment the major components of the robot. To create a new package, run the following command from the workspace src directory:
+## Packages
+TODO:DS: brief detail on how to build the overall package
+TODO:DS: Information on how to build each individual package
 
-```
-ros2 pkg create --build-type ament_cmake --license MIT <package_name>
-```
-
-The build type can be ament_cmake, cmake, or python_cmake. You can read more about creating ROS 2 packages [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#create-a-package).
-
-
-## Components
-TODO:DS: Treat the packages as 'Components' of the design. 1:1 Component to package
-TODO:DS: Come up with the actual major robot components.
-TODO:DS: As per the design, the robot consists of components bla, bla, and bla. The following three packages relate to them?
-
-### Test ROS Micro Component
-TODO:DS: Introduce the package, link to external document with more specifics on building, deploying, the project. Hardware, etc
-TODO:DS: Package is hello_micro
-
-### Test ROS 2 Package
-TODO:DS: Same as above
-TODO:DS: Package is ros_test_pkg
+### Package 1
+TODO:DS: Brief detail on Package 1
+TODO:DS: How to build Package 1
+TODO:DS: How to deploy Package 1
+TODO:DS: Link to Package 1, for more details and specific component documentation
 
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
@@ -43,7 +31,7 @@ WORK IN PROGRESS
 
 I think I need to better separate Robot Design from software components. Treat software packages as components to the robot design. Design first, software second.
 
-
+Links for ko-fi, etc
 
 
 ## What is the Objective of this Robot?
