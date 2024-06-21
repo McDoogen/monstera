@@ -1,25 +1,27 @@
 # Monstera: Cat Finding Robot
-TODO:DS: What is Monstera? What is the purpose of this project?
+Monstera is a robot that can autonomously navigate a home identifying cats.
 
 ## Robot Design
-TODO:DS: Briefly mention it here
+Monstera is a four wheeled robot with a depth camera. The camera will provide navigation for the robot, the ability to identify cats, as well as provide live video during teleoperation. Check the link below for bore details on the design of this robot.
 
-[Link to Document](doc/robot_design.md)
+[Robot Design](doc/robot_design.md)
 
 ## Setting up your workspace
-TODO:DS: Using Ubuntu 24, using ROS2 Jazzy. Environment requirements?  Keep it brief.
+This project provides instructions for building and installing software components from Ubuntu 24 with ROS 2 Jazzy. Check the link beflow for instructions on setting up your development environment.
 
-[Link to Document](doc/workspace_setup.md)
+[Workspace Setup](doc/workspace_setup.md)
 
 ## Packages
 TODO:DS: brief detail on how to build the overall package
 TODO:DS: Information on how to build each individual package
 
-### Package 1
+### Monstera Main Controller
 TODO:DS: Brief detail on Package 1
 TODO:DS: How to build Package 1
 TODO:DS: How to deploy Package 1
 TODO:DS: Link to Package 1, for more details and specific component documentation
+
+### Monstera Motor Controller
 
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
@@ -80,14 +82,7 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Start to make 3D models (onshape)
     - All on one level? Sensors and motors. This helps with consistensy. Multiple levels may have some rotation due to inaccuracies of the standoffs.
 - Convert the 3D model into a URDF to use in Gazebo
-- Add links to sub-documents
-- I think I need to split this project into different repos? Let's spend some time thinking of the project structure using PICO & micro-ros + ROS + design documentation.
-- Add steps on how packages were created?
-- Add the build steps... colcon etc
-- Add more steps for setting up workspace? Still need to think how to organize the repo....
 - Do I need individual licenses on each package too?
-- Can I combine the ROS and micro-ros into one package with ament_cmake?
-- Layout: Separate Packages and Repos for each package. Instructions on how to setup the workspace, and which packages to include Maybe a repo for setting up the workspace?
 - Documentation here is for the workspace. How to build and run the packages, and how to create a new package.
 - Should we put documentation for the specific tools like Pi Pico in the individual packages or here? Whats the idea here? This Workspace is for building these two specific package for running on the Monstera Robot. Sure, they can split off. But for this case they are tightly coupled to the Monstera Robot
 - So should all documentation be in the workspace?

@@ -15,11 +15,8 @@ WORK IN PROGRESS
 
 ## What will the Design of the Robot be?
 - Locomotion
-    - Three wheels?
-        - Two driven, one passive
-    - Four Wheels?
+    - Four Wheels
         - Two driven, two passive (castor)
-        - Four driven
 
 ## Design Procedure
 1. Determine Robot Workplace
