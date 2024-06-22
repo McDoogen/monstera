@@ -36,6 +36,9 @@ The build type can be ament_cmake, cmake, or python_cmake. You can read more abo
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
 
+### Useful Tutorials
+- [cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
+
 
 ---
 WORK IN PROGRESS
@@ -98,3 +101,4 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - So should all documentation be in the workspace?
 - Make sure to include plenty of links for pi pico development and ROS2 etc
 - Should I install the pico-sdk source local to this workspace instead? Is that what the include directory is for? Maybe this will help: https://answers.ros.org/question/364293/how-to-include-library-header-files/
+- Building the micro-ros package will colcon with a cmake configured package. It will skip over micro_ros_setup and use [this library](https://github.com/micro-ROS/micro_ros_raspberrypi_pico_sdk)
