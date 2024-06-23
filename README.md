@@ -94,9 +94,7 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Convert the 3D model into a URDF to use in Gazebo
 - Do I need individual licenses on each package too?
 - Documentation here is for the workspace. How to build and run the packages, and how to create a new package.
-- Should we put documentation for the specific tools like Pi Pico in the individual packages or here? Whats the idea here? This Workspace is for building these two specific package for running on the Monstera Robot. Sure, they can split off. But for this case they are tightly coupled to the Monstera Robot
-- So should all documentation be in the workspace?
-- Make sure to include plenty of links for pi pico development and ROS2 etc
 - Should I install the pico-sdk source local to this workspace instead? Is that what the include directory is for? Maybe this will help: https://answers.ros.org/question/364293/how-to-include-library-header-files/
-- Building the micro-ros package will colcon with a cmake configured package. It will skip over micro_ros_setup and use [this library](https://github.com/micro-ROS/micro_ros_raspberrypi_pico_sdk)
 - Look into ROS 2 overlays & underlays
+- Can I have cmake build and install micro_ros_setup? And then I just need to create the agent?
+- How do I supress warnings on dependencies? SYSTEM?
