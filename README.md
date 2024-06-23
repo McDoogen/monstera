@@ -36,7 +36,11 @@ The build type can be ament_cmake, cmake, or python_cmake. You can read more abo
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
 
-### Useful Tutorials
+### Useful Documentation
+- [Getting Started with Raspberry Pi Pico](https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf)
+- [Pi Pico Pinout Diagram](https://pico.pinout.xyz/)
+
+### Tutorials
 - [cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
 
@@ -44,14 +48,7 @@ TODO:DS: List your sources and links for reseearch etc
 WORK IN PROGRESS
 ---
 
-I think I need to better separate Robot Design from software components. Treat software packages as components to the robot design. Design first, software second.
-
 Links for ko-fi, etc
-
-
-## What is the Objective of this Robot?
-The objective of this robot is to explore indoor areas to find your cat. This is good for when you are not at home but want to keep an eye on your pet.
-
 
 
 
@@ -102,3 +99,4 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Make sure to include plenty of links for pi pico development and ROS2 etc
 - Should I install the pico-sdk source local to this workspace instead? Is that what the include directory is for? Maybe this will help: https://answers.ros.org/question/364293/how-to-include-library-header-files/
 - Building the micro-ros package will colcon with a cmake configured package. It will skip over micro_ros_setup and use [this library](https://github.com/micro-ROS/micro_ros_raspberrypi_pico_sdk)
+- Look into ROS 2 overlays & underlays
