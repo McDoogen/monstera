@@ -9,17 +9,33 @@
 #include <rclc/rclc.h>
 #include <rclc/executor.h>
 #include <std_msgs/msg/int32.h>
+#include <std_msgs/msg/string.h>
 #include <rmw_microros/rmw_microros.h>
 #include "pico_uart_transport.h"
 
 
-rcl_publisher_t publisher;
-std_msgs__msg__Int32 msg;
+// Function prototype:
+// void (* rclc_subscription_callback_t)(const void *);
+
+// Implementation example:
+void subscription_callback(const void * msgin)
+{
+  // Cast received message to used type
+  const std_msgs__msg__Int32 * msg = (const std_msgs__msg__Int32 *)msgin;
+
+  // Process message
+  printf("Received: %d\n", msg->data);
+}
+
+
 
 void timer_callback(rcl_timer_t *timer, int64_t last_call_time)
 {
-    rcl_ret_t ret = rcl_publish(&publisher, &msg, NULL);
-    msg.data++;
+	printf("Last callback time: %ld\n", last_call_time);
+
+	if (timer != NULL) {
+		// Perform actions
+	}
 }
 
 void stall_motor(uint pin1, uint pin2) {
@@ -44,8 +60,13 @@ void brake_motor(uint pin1, uint pin2) {
 }
 
 int main() {
+    /*
+        What are my nodes?
+        What are my publishers?
+        What are my subscribers?
+        When should my publishers publish? On a schedule? On a change?
+    */
 
-    // Micro ROS Setup
     rmw_uros_set_custom_transport(
 		true,
 		NULL,
@@ -56,13 +77,80 @@ int main() {
 	);
 
 
-    rcl_timer_t timer;
-    rcl_node_t node;
-    rcl_allocator_t allocator;
-    rclc_support_t support;
-    rclc_executor_t executor;
 
+    // Initialize micro-ROS allocator
+    rcl_allocator_t allocator;
     allocator = rcl_get_default_allocator();
+
+    // Initialize support object
+    rclc_support_t support;
+    rclc_support_init(
+        &support,
+        0,
+        NULL,
+        &allocator);
+
+    // Initialize default Node
+    rcl_node_t node;
+    rclc_node_init_default(
+        &node,
+        "pico_node",
+        "",             //TODO:DS: What is the significance of the namespace?
+        &support);
+
+    // Initialize publisher object
+    rcl_publisher_t publisher;
+    std_msgs__msg__Int32 pub_msg;       //TODO:DS: This is discontinued?
+    pub_msg.data = 0;
+    rclc_publisher_init_default(
+        &publisher,
+        &node,
+        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, pub_msg, Int32),
+        "pico_publisher_topic");
+
+    rcl_ret_t ret = rcl_publish(&publisher, &pub_msg, NULL);
+    if (ret != RCL_RET_OK) {
+        // Handle error
+        return -1;
+    }
+
+    // Initialize subscriber object
+    rcl_subscription_t subscriber;
+    std_msgs__msg__Int32 sub_msg;       //TODO:DS: This is discontinued?
+    std_msgs__msg__String sub_msg2;
+    rclc_subscription_init_default(
+        &subscriber,
+        &node,
+        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, sub_msg, Int32),
+        "pico_subscriber_topic");
+    
+
+    // Add subscriber to the executer
+    rclc_executor_t executor;
+    rclc_executor_add_subscription(
+        &executor,
+        &subscriber,
+        &sub_msg,
+        &subscription_callback,
+        ON_NEW_DATA);
+    rclc_executor_spin(&executor);
+
+
+    // Initialize timer object
+    rcl_timer_t timer;
+    rclc_timer_init_default2(
+        &timer,
+        &support,
+        RCL_MS_TO_NS(1000),
+        timer_callback,
+        true);
+
+    // Add timer to the executor
+    rclc_executor_add_timer(&executor, &timer);
+
+
+
+
 
     // Wait for agent successful ping for 2 minutes.
     const int timeout_ms = 1000; 
@@ -76,24 +164,13 @@ int main() {
         return ret;
     }
 
-    rclc_support_init(&support, 0, NULL, &allocator);
-
-    rclc_node_init_default(&node, "pico_node", "", &support);
-    rclc_publisher_init_default(
-        &publisher,
-        &node,
-        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
-        "pico_publisher");
-
-    rclc_timer_init_default2(
-        &timer,
-        &support,
-        RCL_MS_TO_NS(1000),
-        timer_callback,
-        true);
 
     rclc_executor_init(&executor, &support.context, 1, &allocator);
     rclc_executor_add_timer(&executor, &timer);
+
+
+
+
 
     // LED Status Pin Setup
     const uint LED_PIN = PICO_DEFAULT_LED_PIN;
@@ -133,7 +210,8 @@ int main() {
     pwm_set_chan_level(sliceB, chanB, 0);
     pwm_set_enabled(sliceB, true);
 
-    msg.data = 0;
+    
+    gpio_put(LED_PIN, 1);
     while (true) {
     /*
         Better Motor Test:
@@ -159,22 +237,18 @@ int main() {
 
     */
         // Stall 3 seconds
-        gpio_put(LED_PIN, 0);
         stall_motor(AIN1_PIN, AIN2_PIN);
         sleep_ms(3000);
 
         // Spin 3 seconds
-        gpio_put(LED_PIN, 1);
         spin_motor(AIN1_PIN, AIN2_PIN, 0);
         sleep_ms(3000);
 
         // Brake 3 seconds
-        gpio_put(LED_PIN, 0);
         brake_motor(AIN1_PIN, AIN2_PIN);
         sleep_ms(3000);
 
         // Spin 3 seconds, in the opposite direction
-        gpio_put(LED_PIN, 1);
         spin_motor(AIN1_PIN, AIN2_PIN, 1);
         sleep_ms(3000);
 
