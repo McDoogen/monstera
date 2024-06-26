@@ -24,6 +24,9 @@ TODO:DS: Link to Package 1, for more details and specific component documentatio
 ### Monstera Motor Controller
 TODO:DS: ...
 
+### Monstera Motor Teleoperation
+#TODO:DS: First phase of control, just basic teleoperation. 
+
 ### Creating a New Package
 To create a new package, run the following command from the workspace **src** directory:
 
@@ -32,6 +35,10 @@ ros2 pkg create --build-type ament_cmake --license MIT <package_name>
 ```
 
 The build type can be ament_cmake, cmake, or python_cmake. You can read more about creating ROS 2 packages [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#create-a-package).
+
+## 3rd Party Packages
+- [teleop_twist_keyboard](https://index.ros.org/r/teleop_twist_keyboard/#jazzy)
+
 
 ## Sources
 TODO:DS: List your sources and links for reseearch etc
@@ -98,3 +105,5 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Look into ROS 2 overlays & underlays
 - Can I have cmake build and install micro_ros_setup? And then I just need to create the agent?
 - How do I supress warnings on dependencies? SYSTEM?
+- Add a cheat sheet of commands, like rosdep install --from-paths src -y --ignore-src. And include the creating a new package one!
+- Start a Glossary? Odometry?
