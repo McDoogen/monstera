@@ -1,7 +1,16 @@
 # Robot Design
 
 ## Bill of Materials
-#TODO:DS: ...
+- The Robot
+    - Motors: [Geared DC Motor, Adafruit #4416](https://www.adafruit.com/product/4416)
+        - M3 Bolts?
+    - Possible Sensors
+        - https://store.stereolabs.com/products/zed-mini
+        - https://shop.luxonis.com/collections/oak-cameras-1/products/oak-d-lite-1?variant=42583102456031
+        - https://store.intelrealsense.com/buy-intel-realsense-depth-camera-d415.html
+- The Docking Station
+- The Kiosk
+- Controller
 
 ## Design Departments
 For a more technical look at th edesign, check out the links below!
@@ -85,16 +94,7 @@ General design Criteria here, then pages for specific goodies
 
 
 ## Bill of Materials
-- The Robot
-    - Motors: [Geared DC Motor, Adafruit #4416](https://www.adafruit.com/product/4416)
-        - M3 Bolts?
-    - Possible Sensors
-        - https://store.stereolabs.com/products/zed-mini
-        - https://shop.luxonis.com/collections/oak-cameras-1/products/oak-d-lite-1?variant=42583102456031
-        - https://store.intelrealsense.com/buy-intel-realsense-depth-camera-d415.html
-- The Docking Station
-- The Kiosk
-- Controller
+
 
 
 ### Motor Notes
