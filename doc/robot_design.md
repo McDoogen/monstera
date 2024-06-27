@@ -1,8 +1,38 @@
 # Robot Design
 
+## Bill of Materials
+#TODO:DS: ...
+
+## Design Departments
+For a more technical look at th edesign, check out the links below!
+
+- [Mechanical Design](departments/mechanical.md)
+- [Electrical Design](departments/electrical.md)
+- [Control Design](departments/control.md)
+- [Software Design](departments/software.md)
+
+
 ---
 WORK IN PROGRESS
 ---
+
+Don't forget to have fun. A vida boa.
+
+General design Criteria here, then pages for specific goodies
+
+
+## Design Departments
+- Software
+    - ROS Packages
+- Control System
+    - Control theory! AKA, the fun stuff!!
+- Mechanical
+    - Chassis
+    - Motor Subassembly
+- Electrical
+    - PCBs
+    - Wiring
+
 
 ## What are the Design Criteria of this Robot?
 - Navigate a single floor indoors autonomously.
