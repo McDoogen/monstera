@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="ros_test_pkg" exec="my_node" name="some_name_here" namespace="my_namespace"/>
+</launch>
