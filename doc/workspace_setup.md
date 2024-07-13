@@ -3,11 +3,19 @@
 ## Setup ROS Jazzy
 This project uses ROS 2 Jazzy. You can set that up by following the procedure documented [here](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html).
 
-And to source your ROS2 Environment on every session, run this command
+To source your ROS2 Environment on every session, run the following command.
 
 ```
 echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 ```
+
+We'll also install a few other dependencies needed for development with ROS.
+```
+sudo apt install ros-jazzy-joint-state-publisher-gui
+sudo apt install ros-jazzy-xacro
+```
+
+
 
 
 ## Setup VSCode
