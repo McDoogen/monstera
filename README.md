@@ -50,6 +50,9 @@ TODO:DS: List your sources and links for reseearch etc
 ### Tutorials
 - [cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
+### Relevant ROS Enhancement Proposals (REPs)
+- [REP 103 - Standard Units of Measure and Coordinate Conventions](https://www.ros.org/reps/rep-0103.html)
+- [REP 105 - Coordinate Frames for Mobile Platforms](https://www.ros.org/reps/rep-0105.html)
 
 ---
 WORK IN PROGRESS
@@ -107,3 +110,4 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - How do I supress warnings on dependencies? SYSTEM?
 - Add a cheat sheet of commands, like rosdep install --from-paths src -y --ignore-src. And include the creating a new package one!
 - Start a Glossary? Odometry?
+- Troubleshooting page with export QT_QPA_PLATFORM=xcb rviz2? [See this link](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html)

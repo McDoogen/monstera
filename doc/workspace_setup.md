@@ -11,8 +11,7 @@ echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 
 We'll also install a few other dependencies needed for development with ROS.
 ```
-sudo apt install ros-jazzy-joint-state-publisher-gui
-sudo apt install ros-jazzy-xacro
+sudo apt install ros-jazzy-joint-state-publisher-gui ros-jazzy-xacro ros-jazzy-ros2-control ros-jazzy-ros2-controllers
 ```
 
 
