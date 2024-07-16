@@ -33,10 +33,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME})
-
-install (DIRECTORY urdf
+install(DIRECTORY src launch urdf rviz
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

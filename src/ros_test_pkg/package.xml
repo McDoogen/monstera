@@ -9,6 +9,13 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
   <depend>teleop_twist_keyboard</depend>
   <depend>ros2_controllers</depend>
 
@@ -22,5 +29,4 @@
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
 
-  <exec_depend>ros2launch</exec_depend>
 </package>

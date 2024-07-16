@@ -1,41 +1,57 @@
 import os
 from launch import LaunchDescription
-from ament_index_python.packages import get_package_share_directory
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch_ros.substitutions import FindPackageShare
+from launch.actions import DeclareLaunchArgument
+from launch.conditions import IfCondition, UnlessCondition
+from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
-
+from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-    ld = LaunchDescription()
+    pkg_share = FindPackageShare(package='ros_test_pkg').find('ros_test_pkg')
+    default_model_path = os.path.join(pkg_share, 'urdf/test_bot.urdf')
+    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
 
-    # ld.add_action(Node(
-    #     package="ros_test_pkg",
-    #     executable="my_node",
-    #     name="derp"
-    # ))
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
+    )
+    joint_state_publisher_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        parameters=[{'robot_description': Command(['xacro ', default_model_path])}],
+        condition=UnlessCondition(LaunchConfiguration('gui'))
+    )
+    joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui',
+        condition=IfCondition(LaunchConfiguration('gui'))
+    )
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', LaunchConfiguration('rvizconfig')],
+    )
 
-    urdf_file_name = 'test_bot.urdf'
-    urdf = os.path.join(
-        get_package_share_directory('ros_test_pkg'),
-        'urdf',
-        urdf_file_name)
-    with open(urdf, 'r') as infp:
-        robot_desc = infp.read()
-    ld.add_action(Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            name='robot_state_publisher',
-            output='screen',
-            parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_desc}],
-            arguments=[urdf]))
-    
-    ld.add_action(Node(
-            package='ros_test_pkg',
-            executable='my_node',
-            name='derp',
-            output='screen'))
-
-    return ld
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            name='gui',
+            default_value='True',
+            description='Flag to enable joint_state_publisher_gui'),
+        DeclareLaunchArgument(
+            name='model',
+            default_value=default_model_path,
+            description='Absolute path to robot urdf file'),
+        DeclareLaunchArgument(
+            name='rvizconfig',
+            default_value=default_rviz_config_path,
+            description='Absolute path to rviz config file'),
+        joint_state_publisher_node,
+        joint_state_publisher_gui_node,
+        robot_state_publisher_node,
+        rviz_node
+    ])
