@@ -60,6 +60,14 @@ echo "export PICO_SDK_PATH=$HOME/pico-sdk" >> ~/.bashrc
 source ~/.bashrc
 ```
 
+4. Updating the SDK
+
+```
+cd ~/pico-sdk
+git pull
+git submodule update
+```
+
 
 ## Install [Picotool](https://github.com/raspberrypi/picotool)
 
