@@ -111,3 +111,4 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Add a cheat sheet of commands, like rosdep install --from-paths src -y --ignore-src. And include the creating a new package one!
 - Start a Glossary? Odometry?
 - Troubleshooting page with export QT_QPA_PLATFORM=xcb rviz2? [See this link](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html)
+- URDF- Geometry, Model, Physical Properties. Start with the geometry for the transformationa
