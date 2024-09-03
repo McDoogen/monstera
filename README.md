@@ -12,17 +12,17 @@ This project provides instructions for building and installing software componen
 [Workspace Setup](doc/workspace_setup.md)
 
 ## Packages
-This project consists of ROS 2 packages that compliment the major components of the robot. 
+This project consists of ROS 2 packages that compliment the major components of the robot.
 TODO:DS: brief detail on how to build the overall package
+
+### Monstera Blinky
+This package is a 'Hello World' package that I will use while setting up my development workflow. It will consists of a Node subscribed to teleop messages and blink different LEDs accordingly.
 
 ### Monstera Main Controller
 TODO:DS: Brief detail on Package 1
 TODO:DS: How to build Package 1
 TODO:DS: How to deploy Package 1
 TODO:DS: Link to Package 1, for more details and specific component documentation
-
-### Monstera Motor Controller
-TODO:DS: ...
 
 ### Monstera Motor Teleoperation
 #TODO:DS: First phase of control, just basic teleoperation. 
@@ -112,3 +112,10 @@ Motor2 (PWMB) |GP11|-----|GP20| IMU(Y)
 - Start a Glossary? Odometry?
 - Troubleshooting page with export QT_QPA_PLATFORM=xcb rviz2? [See this link](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html)
 - URDF- Geometry, Model, Physical Properties. Start with the geometry for the transformationa
+- Clean out the PICO parts
+- Figure out GPIO with the onboard PI control.
+- How do I deploy this to my Robot in the most straight-forward manner? Container?
+- How do I deploy and install my ROS2 packages to the Robot without building it on the Robot? Can I creat an apt package? A Snap? a rosdep package thing?
+- Can I pre-install apt dependencies on an Ubuntu build? How can I make a custom Ubuntu build?
+- What's a goof GPIO hello world? A pub, a Sub, and a blinking light. One package, two nodes. Or a pub and teleop with a blinking light?
+- Move component documents into the src folder with the component

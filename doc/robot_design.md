@@ -93,10 +93,6 @@ General design Criteria here, then pages for specific goodies
     - Actuators
 
 
-## Bill of Materials
-
-
-
 ### Motor Notes
 - 2 M3 bolt holes on the front surface. 17mm apart
 - 3mm diameter shaft, 11mm long, keyed .45mm deep
