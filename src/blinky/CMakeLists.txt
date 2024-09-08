@@ -9,7 +9,6 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-# find_package(gpiodcxx REQUIRED)
 
 add_executable(blinky src/blinky.cpp)
 ament_target_dependencies(blinky rclcpp std_msgs)
