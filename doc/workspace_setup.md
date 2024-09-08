@@ -60,3 +60,17 @@ ros2 run micro_ros_agent micro_ros_agent serial -D /dev/ttyACM0
 
 You can read more about the micro_ros_setup package as well as the agent at the following link.
 [micro_ros_setup ](https://github.com/micro-ROS/micro_ros_setup/tree/jazzy?tab=readme-ov-file#building)
+
+
+## Setup GPIO on the PI
+
+This project will use the C++ bindings for the [libgpiod](https://github.com/brgl/libgpiod) library to control the GPIO of the Raspberry PI.
+
+```
+sudo apt install gpiod libgpiod-dev
+```
+
+To build... but how do we do this with CMakeLists and ament_cmake?
+```
+g++ -Wall -o gpio gpip.cpp -lgpiodcxx
+```
