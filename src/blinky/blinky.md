@@ -8,8 +8,14 @@ to build this package, from the root directory run...
 colcon build --packages-select blinky
 ```
 
-Then don't forget to source the overlay!
+Don't forget to source the overlay!
 
 ```
 source install/setup.bash
+```
+
+Then run the node!
+
+```
+ros2 run blinky blinky
 ```
