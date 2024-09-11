@@ -34,28 +34,20 @@ public:
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
 
         ::gpiod::chip chip("gpiochip0");
-        RCLCPP_INFO(this->get_logger(), "Name: '%s'", chip.name().c_str());
+        RCLCPP_INFO(this->get_logger(), "Name: '%s' %c", chip.name().c_str(), isOn);
 
         this->publisher_->publish(message);
 
-        //TODO:DS: This callback is called ever 0.5 seconds. Let's blink an LED here
-        // ::gpiod::chip chip("gpiochip0");
-        
-        // auto line = chip.get_line(17);  // GPIO17
-        // line.request({"example", gpiod::line_request::DIRECTION_OUTPUT, 0},1);  
-        
-        // usleep(100000); //waiting 100,000 us or 0.1 seconds
-        
-        // auto info = chip.get_info();
+        auto line = chip.get_line(26);
+        line.request({"example", gpiod::line_request::DIRECTION_OUTPUT, 0},1);
 
-        // ::std::cout << info.name() << " [" << info.label() << "] ("
-        //       << info.num_lines() << " lines)" << ::std::endl;
-
-        // return EXIT_SUCCESS;
-
-
-        // line.set_value(0);
-        // line.release();
+        if(isOn) {
+          line.set_value(0);
+        } else {
+          line.set_value(1);
+        }
+        isOn = !isOn;
+        line.release();
       };
     timer_ = this->create_wall_timer(500ms, timer_callback);
   }
@@ -64,6 +56,7 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
   size_t count_;
+  bool isOn = false;
 };
 
 int main(int argc, char * argv[])
