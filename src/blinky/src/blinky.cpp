@@ -38,7 +38,7 @@ public:
 
         this->publisher_->publish(message);
 
-        auto line = chip.get_line(26);
+        auto line = chip.get_line(21);
         line.request({"example", gpiod::line_request::DIRECTION_OUTPUT, 0},1);
 
         if(isOn) {
