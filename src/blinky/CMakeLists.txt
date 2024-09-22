@@ -13,8 +13,6 @@ find_package(std_msgs REQUIRED)
 add_executable(blinky src/blinky.cpp)
 ament_target_dependencies(blinky rclcpp std_msgs)
 
-target_link_libraries(blinky gpiodcxx)
-
 target_include_directories(blinky PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)

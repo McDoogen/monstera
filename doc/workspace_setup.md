@@ -1,8 +1,8 @@
 # Workspace Setup
 
 
-## Setup ROS Jazzy
-This project uses ROS 2 Jazzy. You can set that up by following the procedure documented [here](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html).
+## Setup [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
+This project uses ROS 2 Jazzy. You can set that up by following the procedure documented in the link above.
 
 To source your ROS2 Environment on every session, run the following command.
 
@@ -16,55 +16,39 @@ sudo apt install ros-jazzy-joint-state-publisher-gui ros-jazzy-xacro ros-jazzy-r
 ```
 
 
-## Setup VSCode
+## Install [Micro ROS Agent](https://github.com/micro-ROS/micro_ros_setup?tab=readme-ov-file#building-micro-ros-agent)
 
-1. Install VSCode
-
+1. Clone the Micro ROS repository into your Workspace. Run all of these commands from the project root directory
 ```
-sudo apt install code
-```
-
-2. Install VSCode Extensions
-
-```
-code --install-extension marus25.cortex-debug code --install-extension ms-vscode.cmake-tools code --install-extension ms-vscode.cpptools
-```
-
-> Note: If you are using VSCode's "Remote Explore" to code over SSH, then make sure to reboot after setting up environment variables otherwise CMake will not be able to locate PICO_SDK_PATH
-
-> Note: For more information about configuring VSCode for ROS 2, check out this article, [here](https://picknik.ai/vscode/docker/ros2/2024/01/23/ROS2-and-VSCode.html)!
-
-
-## Setup micro-ros-agent (If Using)
-
-First, we need to install the micro_ros_setup package. From the workspace root directory, run the following commands
-```
-mkdir uros_ws && cd uros_ws
 git clone -b jazzy https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+```
+2. Build the Micro ROS repository for Jazzy
+```
 rosdep update && rosdep install --from-paths src --ignore-src -y
 colcon build
 source install/local_setup.bash
 ```
 
-Now we need to create the agent. You can do so by running the following commands from the workspace root directoy.
+3. Setup and Build the Micro ROS Agent
 ```
 ros2 run micro_ros_setup create_agent_ws.sh
 ros2 run micro_ros_setup build_agent.sh
 source install/local_setup.sh
+ros2 run micro_ros_agent micro_ros_agent [parameters]
 ```
 
-Now with the agent installed, you can start the agent with the following command.
+4. Now, whenever you want to run the agent, you can use the following command as an example.
 ```
 ros2 run micro_ros_agent micro_ros_agent serial -D /dev/ttyACM0
 ```
 
-You can read more about the micro_ros_setup package as well as the agent at the following link.
-[micro_ros_setup ](https://github.com/micro-ROS/micro_ros_setup/tree/jazzy?tab=readme-ov-file#building)
-
 
 ## Setup GPIO on the PI
+#TODO:DS: Archive this... for referencing
 
 This project will use the C++ bindings for the [libgpiod](https://github.com/brgl/libgpiod) library to control the GPIO of the Raspberry PI.
+
+//TODO:DS: Nevermind, don't do this.... wrong version. Instead we will build from source in our CMakeLists.txt....
 
 ```
 sudo apt install gpiod libgpiod-dev

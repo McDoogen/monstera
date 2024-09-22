@@ -11,12 +11,10 @@
 #include <chrono>
 #include <memory>
 #include <string>
+#include <filesystem>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include <gpiod.hpp>
-//TODO:DS: Do I need to include the '-lgpiodcxx' flag for CMakeLists.txt somewhere? for the g++ compiler?
-
 
 using namespace std::chrono_literals;
 
@@ -32,22 +30,7 @@ public:
         auto message = std_msgs::msg::String();
         message.data = "Hello, world! " + std::to_string(this->count_++);
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-
-        ::gpiod::chip chip("gpiochip0");
-        RCLCPP_INFO(this->get_logger(), "Name: '%s' %c", chip.name().c_str(), isOn);
-
         this->publisher_->publish(message);
-
-        auto line = chip.get_line(21);
-        line.request({"example", gpiod::line_request::DIRECTION_OUTPUT, 0},1);
-
-        if(isOn) {
-          line.set_value(0);
-        } else {
-          line.set_value(1);
-        }
-        isOn = !isOn;
-        line.release();
       };
     timer_ = this->create_wall_timer(500ms, timer_callback);
   }

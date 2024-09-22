@@ -78,3 +78,4 @@ WORK IN PROGRESS
 - URDF- Geometry, Model, Physical Properties. Start with the geometry for the transformationa
 - What's a goof GPIO hello world? A pub, a Sub, and a blinking light. One package, two nodes. Or a pub and teleop with a blinking light?
 - Outline the 0.1 release for the end of the year, and also outline the 1.0 release goals
+- Source setup or local_setup? https://colcon.readthedocs.io/en/released/developer/environment.html#workspace-level
