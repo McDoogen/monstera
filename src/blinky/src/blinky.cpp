@@ -14,30 +14,28 @@
 #include <filesystem>
 
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "std_msgs/msg/int32.hpp"
 
 using namespace std::chrono_literals;
 
-class MinimalPublisher : public rclcpp::Node
+class MonsteraBlink : public rclcpp::Node
 {
-public:
-  MinimalPublisher()
-  : Node("minimal_publisher"), count_(0)
-  {
-    publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+  public:
+  MonsteraBlink() : Node("monstera"), count_(0) {
+    publisher_ = this->create_publisher<std_msgs::msg::Int32>("comm_led", 10);
     auto timer_callback =
       [this]() -> void {
-        auto message = std_msgs::msg::String();
-        message.data = "Hello, world! " + std::to_string(this->count_++);
-        RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+        auto message = std_msgs::msg::Int32();
+        message.data = count_++ % 2;
+        RCLCPP_INFO(this->get_logger(), "Publishing: '%i'", message.data);
         this->publisher_->publish(message);
       };
     timer_ = this->create_wall_timer(500ms, timer_callback);
   }
 
-private:
+  private:
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr publisher_;
   size_t count_;
   bool isOn = false;
 };
@@ -45,7 +43,7 @@ private:
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::spin(std::make_shared<MonsteraBlink>());
   rclcpp::shutdown();
   return 0;
 }
