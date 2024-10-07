@@ -30,19 +30,6 @@ Don't forget to have fun. A vida boa.
 General design Criteria here, then pages for specific goodies
 
 
-## Design Departments
-- Software
-    - ROS Packages
-- Control System
-    - Control theory! AKA, the fun stuff!!
-- Mechanical
-    - Chassis
-    - Motor Subassembly
-- Electrical
-    - PCBs
-    - Wiring
-
-
 ## What are the Design Criteria of this Robot?
 - Navigate a single floor indoors autonomously.
 - Identify cats
@@ -165,10 +152,3 @@ General design Criteria here, then pages for specific goodies
         - https://en.wikipedia.org/wiki/Zeros_and_poles
         - https://en.wikipedia.org/wiki/Equations_of_motion
         - https://en.wikipedia.org/wiki/State-space_representation
-
-## Phases (See other notes)
-Balance in one place
-Move forward and back
-Turn left and right
-User Control to navigate
-Automated Control with Nav2

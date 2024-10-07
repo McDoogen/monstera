@@ -76,6 +76,5 @@ WORK IN PROGRESS
 - Start a Glossary? Odometry?
 - Troubleshooting page with export QT_QPA_PLATFORM=xcb rviz2? [See this link](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html)
 - URDF- Geometry, Model, Physical Properties. Start with the geometry for the transformationa
-- What's a goof GPIO hello world? A pub, a Sub, and a blinking light. One package, two nodes. Or a pub and teleop with a blinking light?
-- Outline the 0.1 release for the end of the year, and also outline the 1.0 release goals
 - Source setup or local_setup? https://colcon.readthedocs.io/en/released/developer/environment.html#workspace-level
+- We should include the logic shifter in the documentation. 2 3.7V = 7.4V. We need 3.3V for logic. https://www.adafruit.com/product/2165
